@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Events</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if logged_in? %>
+      <%= link_to "Log out", logout_path, method: :delete %>
+      <%= link_to "Create event", new_event_path %>
+      <%= link_to "All Events", events_path %>
+      <p>Logged in as: <%= link_to current_user.name, current_user %></p>
+    <% else %>
+      <%= link_to "Login", login_path %>
+      <%= link_to "Create account", signup_path %>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
